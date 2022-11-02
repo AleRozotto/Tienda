@@ -16,8 +16,8 @@ public class ClienteServicelmpl implements ClienteService {
     
     @Override
     @Transactional(readOnly = true)
-    public List<Cliente> getCliente() {
-        return (List<Cliente>) clienteDao.findAll();
+    public List<Cliente> getClientes() {
+        return (List<Cliente>)clienteDao.findAll();
     }
 
     @Override 

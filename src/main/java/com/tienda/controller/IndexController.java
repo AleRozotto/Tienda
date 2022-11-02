@@ -24,7 +24,7 @@ public class IndexController {
         var texto = "Estamos en semana 4";        
         model.addAttribute("mensaje", texto);
         
-        var clientes=clienteService.getCliente(); //PREGUNTAR S
+        var clientes=clienteService.getClientes(); 
         
         model.addAttribute("clientes",clientes);
         return "index";
