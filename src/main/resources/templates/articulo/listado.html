@@ -1,0 +1,46 @@
+
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>TechShop</title>
+        <meta charset="UTF-8">
+                        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
+
+    </head>
+    <body>
+        <header th:replace="layout/plantilla :: header"/>
+        <div class="contenido">
+        <h2>Listado de Articulos</h2>
+           
+        <a th:href="@{/nuevoArticulo}">Nuevo Articulo</a>       
+    <div th:if="${articulos !=null and !articulos.empty}">    
+       <table border="1">
+        <thead>
+        <tr>
+            <th>Descripcion</th>
+            <th>Precio</th>
+            <th>Existencias</th>
+            <th>Activo</th>
+            <th>Eliminar</th>
+            <th>Modificar</th>
+            
+        </tr>  
+        </thead>
+        <tr th:each="articulo : ${articulos}">
+            <td>[[${articulo.descripcion}]]</td>
+            <td style="text-align: right" >[[${#numbers.formatDecimal(articulo.precio,3,2)}]]</td>
+            <td style="text-align: center" >[[${articulo.existencias}]]</td>
+            <td style="text-align: center"><input type="checkbox" name="activo" th:checked="${articulo.activo}" disabled="true"/> </td>
+            <td><a th:href="@{/eliminarArticulo/} + ${articulo.idArticulo}">Eliminar</a></td>
+            <td><a th:href="@{/modificarArticulo/} + ${articulo.idArticulo}">Modificar</a></td>
+
+        </tr>
+       </table>  
+    </div>    
+        <div th:if="${articulos ==null or articulos.empty}">
+            <h2>No hay articulos que mostrar</h2>
+        </div>
+        <footer th:replace="layout/plantilla :: footer"/>
+        </div>
+    </body>
+</html>
