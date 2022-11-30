@@ -10,31 +10,31 @@
     <body>
         <header th:replace="layout/plantilla :: header"/>   
         <div class="contenido">
-        <h2>Datos de Cliente</h2>      
-        <a th:href="@{/cliente/listado}">Regresar</a>       
+        <h2>[[#{cliente.datos}]]</h2>      
+        <a th:href="@{/cliente/listado}">[[#{accion.regresar}]]</a>       
         <br>
         <form th:action="@{/guardarCliente}"
               method="post"
               th:object="${cliente}">
             <input type="hidden" name="idCliente" th:field="*{idCliente}"/>
             <input type="hidden" name="idCredito" th:field="*{credito.idCredito}"/>
-            <label for="nombre">Nombre:</label>
+            <label for="nombre">[[#{cliente.nombre}]]</label>
             <input type="text" name="nombre" th:field="*{nombre}"/>
             <br>
-            <label for="apellidos">Apellidos:</label>
+            <label for="apellidos">[[#{cliente.apellidos}]]</label>
             <input type="text" name="apellidos" th:field="*{apellidos}"/>
             <br>
-            <label for="correo">Correo:</label>
+            <label for="correo">[[#{cliente.correo}]]</label>
             <input type="email" name="correo" th:field="*{correo}"/>
             <br>
-            <label for="telefono">Telefono:</label>
+            <label for="telefono">[[#{cliente.telefono}]]</label>
             <input type="tel" name="telefono" th:field="*{telefono}"/>
             <br>
-            <label for="limite">Limite de credito</label>
+            <label for="limite">[[#{cliente.limite}]]</label>
             <input type="number" name="limite" th:field="*{credito.limite}"/>
             <br>
             <hr/>
-            <input type="submit" name="guardar" value="Guardar"/>
+            <button type="submit" th:text="#{accion.guardar}"/>
         </form>
         <footer th:replace="layout/plantilla :: footer"/>
         </div>
